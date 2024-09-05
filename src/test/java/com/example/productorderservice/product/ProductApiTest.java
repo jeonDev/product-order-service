@@ -5,14 +5,11 @@ import io.restassured.RestAssured;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
-@SpringBootTest
 public class ProductApiTest extends ApiTest {
 
     @Test
@@ -20,7 +17,7 @@ public class ProductApiTest extends ApiTest {
         final AddProductRequest request = 상품등록요청_생성();
 
         // API 요청
-        ExtractableResponse<Response> response = RestAssured.given().log().all()  // 요청을 보내는 로그를 남김
+        final ExtractableResponse<Response> response = RestAssured.given().log().all()  // 요청을 보내는 로그를 남김
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(request)
                 .when()
